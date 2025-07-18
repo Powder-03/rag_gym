@@ -21,15 +21,14 @@ A comprehensive gym and fitness information chatbot powered by RAG (Retrieval-Au
 
 ## 🎯 Overview
 
-
 GymPro is an AI-powered chatbot that provides expert advice on fitness, exercise techniques, workout routines, nutrition, and gym-related topics. It uses RAG technology to provide accurate, context-aware responses based on a comprehensive gym knowledge base.
 
 ### Key Technologies
-- **Backend**: FastAPI (Python)
+- **Backend**: FastAPI with Python
 - **Frontend**: Streamlit
-- **AI/ML**: LangChain, Google Generative AI (`gemini-2.5-flash`)
+- **AI/ML**: LangChain, Google Generative AI (Gemini)
 - **Vector Store**: FAISS
-- **Embeddings**: Google Generative AI Embeddings (`models/embedding-001`)
+- **Embeddings**: Google Generative AI Embeddings
 - **Deployment**: Docker & Docker Compose
 
 ## ✨ Features
@@ -193,7 +192,6 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-
 ### 3. Configure Environment Variables
 
 Edit `.env` file and add your Google API key:
@@ -207,11 +205,9 @@ APP_VERSION=1.0.0
 DEBUG=true
 HOST=0.0.0.0
 PORT=8001
-GOOGLE_MODEL=gemini-2.5-flash
-EMBEDDING_MODEL=models/embedding-001
-TEMPERATURE=0.3
+TEMPERATURE=0.1
 CHUNK_SIZE=1000
-CHUNK_OVERLAP=200
+CHUNK_OVERLAP=100
 SIMILARITY_SEARCH_K=3
 ```
 
@@ -230,23 +226,22 @@ chmod +x start_app.sh
 ./start_app.sh
 ```
 
-
 ### Option 2: Individual Services
 
 #### Backend Only
 ```bash
-# Activate virtual environment first!
-venv\Scripts\activate   # Windows
-source venv/bin/activate # Linux/Mac
+# Activate virtual environment first
+.\venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
 
 python main.py
 ```
 
 #### Frontend Only
 ```bash
-# Activate virtual environment first!
-venv\Scripts\activate   # Windows
-source venv/bin/activate # Linux/Mac
+# Activate virtual environment first
+.\venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
 
 streamlit run streamlit_app.py
 ```
@@ -350,22 +345,21 @@ GET /api/health               # Detailed system status
 
 ## ⚙️ Configuration
 
-
 ### Core Settings (`app/core/config.py`)
 ```python
 # Model Configuration
-GOOGLE_MODEL = "gemini-2.5-flash"
+GOOGLE_MODEL = "gemini-2.0-flash-exp"
 EMBEDDING_MODEL = "models/embedding-001"
-TEMPERATURE = 0.3
+TEMPERATURE = 0.1
 
 # RAG Configuration
 CHUNK_SIZE = 1000
-CHUNK_OVERLAP = 200
+CHUNK_OVERLAP = 100
 SIMILARITY_SEARCH_K = 3
 
 # File Paths
 GYM_DATA_FILE = "data/gym_data.txt"
-FAISS_INDEX_PATH = "data/vector_store"
+FAISS_INDEX_PATH = "data/faiss_index"
 ```
 
 ### Streamlit Configuration
